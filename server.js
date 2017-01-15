@@ -14,7 +14,7 @@ var port = process.env.PORT || 3000;
 
 app.listen(port);
 
-var connectionString = 'mongodb://127.0.0.1:27017/test';
+var connectionString = 'mongodb://shindemanoj:test123123@ds137267.mlab.com:37267/heroku_93g5fxv4';
 if(process.env.MONGODB_URI){
     connectionString = process.env.MONGODB_URI
 }
