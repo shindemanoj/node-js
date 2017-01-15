@@ -13,3 +13,8 @@ require ("./test/app.js")(app);
 var port = process.env.PORT || 3000;
 
 app.listen(port);
+
+var connectionString = 'mongodb://127.0.0.1:27017/test';
+if(process.env.MONGODB_URI){
+    connectionString = process.env.MONGODB_URI
+}
