@@ -12,3 +12,9 @@ h2 {
     color: #386078;
     font-family: verdana;
 }
+
+body {
+    background-image:url('background.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+}
