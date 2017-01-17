@@ -4,28 +4,34 @@
     <meta charset="UTF-8">
     <title>Web Dev Course Home Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="main.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+            $("#footer").load("footer.html");
+        });
+    </script>
 </head>
 <body>
-    <div class="container">
         <h1>Web Dev Course Home Page</h1>
-
-        <h2>Required links:</h2>
-        <br>
-        <ul>
-            <li>
-                <a href="project/index.html">Project</a>
-            </li>
-            <li>
-                <a href="assignment/index.html">Assignment</a>
-            </li>
-            <li>
-                <a href="test/index.html">Test MongoDB</a>
-            </li>
-            <li>
-                <a href="https://github.com/shindemanoj/shinde-manoj-webdev">Public repository at GitHub.com</a>
-            </li>
-        </ul>
+        <h2> Welcome</h2>
+        <div class="container">
+            <p class="link"> Required links: </p>
+            <ul>
+                <li>
+                    <a href="project/index.html">Project</a>
+                </li>
+                <li>
+                    <a href="assignment/index.html">Assignment</a>
+                </li>
+                <li>
+                    <a href="test/index.html">Test MongoDB</a>
+                </li>
+                <li>
+                    <a href="https://github.com/shindemanoj/shinde-manoj-webdev">Public repository at GitHub.com</a>
+                </li>
+            </ul>
     </div>
+    <div id="footer"></div>
 </body>
 </html>

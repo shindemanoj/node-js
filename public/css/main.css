@@ -1,0 +1,35 @@
+a {
+    color: #23527c;
+    font-size: medium;
+}
+
+h1 {
+    color: #386078;
+    text-align: center;
+}
+
+h2 {
+    color: #386078;
+    font-family: verdana;
+    text-align: center;
+}
+
+body {
+    background-image:url('../images/background.jpg');
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.link {
+    color: black;
+    font-family: verdana;
+    font-size: medium;
+}
