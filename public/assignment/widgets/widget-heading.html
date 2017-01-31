@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../css/styles.css" rel="stylesheet"/>
-    <title>Profile</title>
+    <title>Widget Edit</title>
 </head>
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="widget-list.html">
+                <span class="glyphicon glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
         <div class="navbar-text pull-right">
-            <a href="#">
+            <a href="widget-list.html">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                Profile
+                Widget Edit
             </a>
         </div>
     </div>
@@ -26,34 +31,19 @@
 
 
 <div class="container-fluid">
-    <label for="first">First Name</label>
-    <input id="first" class="form-control" type="text" placeholder="First Name"/>
-
-    <label for="last">Last Name</label>
-    <input id="last" class="form-control" type="text" placeholder="Last Name"/>
-
-    <label for="email">Email</label>
-    <input id="email" class="form-control" type="email" placeholder="Email"/>
-
-    <label>Username</label>
-    <input class="form-control" type="text" placeholder="Username"/>
-
-    <label>Password</label>
-    <input class="form-control" type="password" placeholder="Password"/>
-
-    <a class="btn btn-primary btn-block" href="../website/website-list.html">
-        Websites
-    </a>
-
-    <a class="btn btn-danger btn-block" href="login.html">
-        Logout
-    </a>
+    <label for="widget-name">Name</label>
+    <input id="widget-name" class="form-control" type="text" value="Header" placeholder="Widget Name">
+    <label for="widget-text">Text</label>
+    <input id="widget-text" class="form-control" value="Header Text" type="text" placeholder="Widget Text"/>
+    <label for="widget-size">Size</label>
+    <input id="widget-size" class="form-control" type="text" value="3" placeholder="Widget Size"/>
+    <a class="btn btn-danger btn-block" href="widget-list.html">Delete</a>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#">
+            <a href="../user/profile.html">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>
