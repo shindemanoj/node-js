@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WebAppMaker">
 <head>
-    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="views/css/styles.css" rel="stylesheet"/>
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!-- Controllers -->
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="views/website/controllers/website-list.controller.client.js"></script>
+    <script src="views/website/controllers/website-edit.controller.client.js"></script>
+    <script src="views/website/controllers/website-new.controller.client.js"></script>
+    <script src="views/pages/controllers/page-list.controller.client.js"></script>
+    <script src="views/pages/controllers/page-edit.controller.client.js"></script>
+    <script src="views/pages/controllers/page-new.controller.client.js"></script>
+    <script src="views/widgets/controllers/widget-list.controller.client.js"></script>
+    <script src="views/widgets/controllers/widget-edit.controller.client.js"></script>
+    <script src="views/widgets/controllers/widget-new.controller.client.js"></script>
+
+    <!-- Services -->
+    <script src="services/user.service.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Assignment Home Page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-        $(function(){
-            $("#footer").load("../footer.html");
-        });
-    </script>
+    <meta charset="UTF-8">
+    <title>Assignment Page</title>
 </head>
 <body>
-    <h1>Assignment Home Page</h1>
-    <h2> Welcome</h2>
-    <div id="footer"></div>
+<div ng-view></div>
 </body>
 </html>
