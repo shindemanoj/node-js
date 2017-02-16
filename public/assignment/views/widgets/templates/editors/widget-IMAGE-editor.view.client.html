@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <label for="widget-name">Name</label>
+    <input  ng-model="model.widget.name"
+            id="widget-name"
+            class="form-control"
+            type="text"
+            placeholder="Image Name">
+    <label for="widget-text">Text</label>
+    <input  ng-model="model.widget.text"
+            id="widget-text"
+            class="form-control"
+            type="text"
+            placeholder="Image Text"/>
+    <label for="widget-url">URL</label>
+    <input  ng-model="model.widget.url"
+            id="widget-url"
+            class="form-control"
+            type="text"
+            value="http://sukarto.com/wp-content/uploads/Pursuit-of-Happyness-730x510.jpg"
+            placeholder="Image URL"/>
+    <label for="widget-width">Width</label>
+    <input  ng-model="model.widget.width"
+            id="widget-width"
+            class="form-control"
+            value="100%"
+            type="text"
+            placeholder="Image Width"/>
+    <label for="widget-upload">Upload</label>
+    <input id="widget-upload" class="form-control" type="file"/>
+    <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
+</div>

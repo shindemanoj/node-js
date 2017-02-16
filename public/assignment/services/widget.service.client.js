@@ -18,13 +18,35 @@
         ];
 
         var api = {
-            //"createWidget": createWidget,
+            "createWidget": createWidget,
             "findWidgetsByPageId": findWidgetsByPageId,
-            "findWidgetById": findWidgetById
-            //"updateWidget" : updateWidget,
-            //"deleteWidget": deleteWidget
+            "findWidgetById": findWidgetById,
+            "updateWidget" : updateWidget,
+            "deleteWidget": deleteWidget
         };
         return api;
+
+        function createWidget(pageId, widget) {
+            widget.pageId = pageId;
+            switch(widget.widgetType){
+                case "HEADER":
+                    widget.text = "Default Text";
+                    widget.size = 3;
+                    break;
+                case "IMAGE":
+                    widget.width = "100%";
+                    widget.url = "http://lorempixel.com/";
+                    break;
+                case "YOUTUBE":
+                    widget.width = "100%";
+                    widget.url = "http://lorempixel.com/";
+                    break;
+                case "HTML":
+                    widget.text = "Default Text";
+                    break;
+            }
+            widgets.push(widget);
+        }
 
         function findWidgetsByPageId(pageId) {
             var widgetsOfId = [];
@@ -43,6 +65,39 @@
                 }
             }
             return null;
+        }
+
+        function updateWidget(widgetId, newWidget){
+            for(w in widgets){
+                widget = widgets[w];
+                if(widget._id === widgetId){
+                    switch(widget.widgetType){
+                        case "HEADER":
+                            widget.text = newWidget.text;
+                            widget.size = newWidget.size;
+                            break;
+                        case "IMAGE":
+                            widget.width = newWidget.width;
+                            widget.url = newWidget.url;
+                            break;
+                        case "YOUTUBE":
+                            widget.width = newWidget.width;
+                            widget.url = newWidget.url;
+                            break;
+                        case "HTML":
+                            widget.text = newWidget.text;
+                            break;
+                    }
+                }
+            }
+        }
+
+        function deleteWidget(widgetId) {
+            for(var w in widgets) {
+                if(widgets[w]._id === widgetId) {
+                    widgets.splice(w, 1);
+                }
+            }
         }
     }
 })();

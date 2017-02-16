@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../css/styles.css" rel="stylesheet"/>
-    <title>Widget Chooser</title>
-</head>
-<body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="widget-list.view.client.html">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
                 Choose Widget
             </a>
         </div>
@@ -28,19 +17,16 @@
 <div class="container-fluid">
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="widget-heading.view.client.html">Header</a>
+            <a ng-click="model.createWidget('HEADER')">Header</a>
         </li>
         <li class="list-group-item">
-            <a href="widget-image.view.client.html">Image</a>
+            <a ng-click="model.createWidget('IMAGE')">Image</a>
         </li>
         <li class="list-group-item">
-            <a href="widget-youtube.view.client.html">YouTube</a>
+            <a ng-click="model.createWidget('YOUTUBE')">YouTube</a>
         </li>
         <li class="list-group-item">
-            <a href="#">Label</a>
-        </li>
-        <li class="list-group-item">
-            <a href="#">HTML</a>
+            <a ng-click="model.createWidget('HTML')">HTML</a>
         </li>
     </ul>
 </div>
@@ -48,12 +34,9 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="../../user/templates/profile.view.client.html">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>
     </div>
 </nav>
-
-</body>
-</html>
