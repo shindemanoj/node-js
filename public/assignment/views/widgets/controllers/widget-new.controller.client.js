@@ -9,15 +9,13 @@
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
 
+        //Event Handler
         vm.createWidget = createWidget;
 
         function init() {
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
-
-        //Event Handlers
-        vm.createWidget = createWidget;
 
         function createWidget(widgetType) {
             newWidget = {};

@@ -10,6 +10,7 @@
         // Event Handlers
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
+
         function init(){
             var user = UserService.findUserById(userId);
             vm.user = user;

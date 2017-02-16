@@ -7,6 +7,8 @@
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
+
+        //Event Handlers
         vm.createPage = createPage;
 
         function init() {
