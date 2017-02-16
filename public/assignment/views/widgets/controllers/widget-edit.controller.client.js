@@ -16,12 +16,17 @@
         init();
 
         //Event Handleres
-        vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
+        vm.createWidget = createWidget;
 
-        function getEditorTemplateUrl(type) {
-            return 'views/widgets/templates/editors/widget-'+type+'-editor.view.client.html';
+        function createWidget(widgetType) {
+            newWidget = {};
+            newWidget._id =  (new Date()).getTime().toString();
+            newWidget.widgetType = widgetType;
+
+            WidgetService.createWidget(vm.pageId, newWidget);
+            $location.url("/user/" + vm.userId +"/website/" +vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
         }
 
         function updateWidget() {
