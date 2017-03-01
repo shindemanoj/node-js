@@ -14,8 +14,14 @@
         init();
 
         function createWebsite (website) {
-            WebsiteService.createWebsite(vm.userId, website);
-            $location.url("/user/"+vm.userId+"/website");
+            WebsiteService
+                .createWebsite(vm.userId, website)
+                .success(function(website){
+                    $location.url("/user/"+vm.userId+"/website");
+                })
+                .error(function () {
+                    vm.error = 'sorry could not create website';
+                });
         };
     }
 })();

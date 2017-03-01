@@ -13,19 +13,42 @@
         vm.updateWebsite = updateWebsite;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            WebsiteService
+                .findWebsitesByUser(vm.userId)
+                .success(function (websites) {
+                    vm.websites = websites;
+                })
+            WebsiteService
+                .findWebsiteById(vm.websiteId)
+                .success(function (website) {
+                    vm.website = website;
+                })
         }
         init();
 
         function deleteWebsite () {
-            vm.websites = WebsiteService.deleteWebsite(vm.websiteId);
-            $location.url("/user/"+vm.userId+"/website");
+            var answer = confirm("Are you sure?");
+            if(answer) {
+                WebsiteService
+                    .deleteWebsite(vm.websiteId)
+                    .success(function () {
+                        $location.url("/user/"+vm.userId+"/website");
+                    })
+                    .error(function () {
+                        vm.error = 'unable to remove website';
+                    });
+            }
         };
 
         function updateWebsite (website) {
-            vm.website = WebsiteService.updateWebsite(vm.websiteId, website);
-            $location.url("/user/"+vm.userId+"/website");
+            WebsiteService
+                .updateWebsite(vm.websiteId, website)
+                .success(function (website) {
+                    $location.url("/user/"+vm.userId+"/website");
+                })
+                .error(function (err) {
+                   vm.error = 'unable to update website';
+                });
         };
     }
 })();

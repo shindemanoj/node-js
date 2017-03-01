@@ -13,19 +13,22 @@
 
         }
         init();
-        
+
+
         function login(user) {
-            if(user){
-                var user = UserService.findUserByCredentials(user.username, user.password);
-                if(user) {
-                    $location.url("/user/"+user._id);
-                } else {
-                    vm.error = "User not found";
-                }
-            }
-            else{
-                vm.error = "Enter required information";
-            }
+            var promise = UserService.findUserByCredentials(user.username, user.password);
+            promise
+                .success(function (user) {
+                    var loginUser = user;
+                    if(loginUser != null) {
+                        $location.url('/user/' + loginUser._id);
+                    } else {
+                        vm.error = 'user not found';
+                    }
+                })
+                .error(function(err) {
+                    vm.error = 'user not found';
+                });
         }
     }
 })();

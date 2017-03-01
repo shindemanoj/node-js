@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("ProfileController", profileController);
 
-    function profileController($routeParams, UserService){
+    function profileController($routeParams, UserService, $location){
         var vm = this;
         var userId = $routeParams['uid'];
 
@@ -12,28 +12,37 @@
         vm.deleteUser = deleteUser;
 
         function init(){
-            var user = UserService.findUserById(userId);
-            vm.user = user;
+            var promise = UserService.findUserById(userId);
+            promise
+                .success(function (user) {
+                    vm.user = user;
+                });
         }
         init();
-        
+
         function updateUser(newUser) {
-            var user = UserService.updateUser(userId, newUser);
-            vm.user = user;
-            if(user != null) {
-                vm.message = "User Successfully Updated!"
-            } else {
-                vm.error = "Unable to update user";
-            }
+            UserService
+                .updateUser(userId, newUser)
+                .success(function (user) {
+                    vm.message = "user successfully updated"
+                })
+                .error(function () {
+                    vm.error = "unable to update user";
+                });
         }
 
         function deleteUser(userId) {
-            var users = UserService.deleteUser(userId);
-            vm.users = users;
-            if(users != null) {
-                vm.message = "User Successfully Deleted!"
-            } else {
-                vm.error = "Unable to delete user";
+            var answer = confirm("Are you sure?");
+            console.log(answer);
+            if(answer) {
+                UserService
+                    .deleteUser(userId)
+                    .success(function () {
+                        $location.url("/login");
+                    })
+                    .error(function () {
+                        vm.error = 'unable to remove user';
+                    });
             }
         }
     }

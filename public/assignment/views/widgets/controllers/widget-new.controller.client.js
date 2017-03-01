@@ -13,7 +13,11 @@
         vm.createWidget = createWidget;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+            WidgetService
+                .findWidgetsByPageId(vm.pageId)
+                .success(function (widgets) {
+                    vm.widgets = widgets;
+                })
         }
         init();
 
@@ -21,9 +25,18 @@
             newWidget = {};
             newWidget._id =  (new Date()).getTime().toString();
             newWidget.widgetType = widgetType;
-
-            WidgetService.createWidget(vm.pageId, newWidget);
-            $location.url("/user/" + vm.userId +"/website/" +vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+            WidgetService
+                .createWidget(vm.pageId, newWidget)
+                .success(function(widget){
+                    $location.url("/user/" + vm.userId +"/website/" +vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                })
+                .error(function () {
+                    vm.error = 'sorry could not create widget';
+                });
+        }
+        function uploadImage(){
+            console.log("HAHAHA");
+            return $http.post("/api/upload");
         }
 
     }
