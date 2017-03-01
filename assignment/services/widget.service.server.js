@@ -1,39 +1,15 @@
 module.exports = function (app) {
+    var multer = require('multer'); // npm install multer --save
+    var upload = multer({ dest: __dirname+'/../../public/uploads' });
+
     app.get("/api/widget/:widgetId", findWidgetById);
     app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
     app.post("/api/page/:pageId/widget", createWidget);
-
-    var multer = require('multer'); // npm install multer --save
-    var upload = multer({ dest: __dirname+'/../../public/uploads' });
-
     app.post ("/api/upload", upload.single('myFile'), uploadImage);
 
-    function uploadImage(req, res) {
-
-        var widgetId      = req.body.widgetId;
-        var width         = req.body.width;
-        var myFile        = req.file;
-
-        var originalname  = myFile.originalname; // file name on user's computer
-        var filename      = myFile.filename;     // new file name in upload folder
-        var path          = myFile.path;         // full path of uploaded file
-        var destination   = myFile.destination;  // folder where file is saved to
-        var size          = myFile.size;
-        var mimetype      = myFile.mimetype;
-
-        var widget = req.body.widget;
-        widget._id = widgetId;
-        widget.widgetType = "IMAGE";
-        widget.pageId = "321";
-        widget.width = width;
-        widget.url = path;
-        widgets.push(widget);
-        res.redirect('/assignment/#/user/456/website/456/page/321/widget');
-    }
-
-     var widgets = [
+    var widgets = [
         { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
         { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
         { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
@@ -44,6 +20,32 @@ module.exports = function (app) {
             "url": "https://youtu.be/AM2Ivdi9c4E" },
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
+
+    function uploadImage(req, res) {
+
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var pageId = null;
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        for (var i in widgets) {
+            if (widgets[i]._id === widgetId) {
+                widgets[i].width = width;
+                widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+                pageId = widgets[i].pageId;
+            }
+        }
+        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
+    }
 
     function deleteWidget(req, res) {
         var widgetId = req.params.widgetId;

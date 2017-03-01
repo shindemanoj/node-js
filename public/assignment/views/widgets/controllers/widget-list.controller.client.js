@@ -27,6 +27,11 @@
             return url;
         }
 
+        $('#widget-list')
+            .sortable({
+                axis: "y"
+            });
+
         function getTrustedHtml(html) {
             return $sce.trustAsHtml(html);
         }
