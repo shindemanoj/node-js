@@ -28,23 +28,27 @@ module.exports = function (app) {
         var myFile        = req.file;
         var userId = req.body.userId;
         var websiteId = req.body.websiteId;
-        var pageId = null;
+        var pageId = req.body.pageId;
 
-        var originalname  = myFile.originalname; // file name on user's computer
-        var filename      = myFile.filename;     // new file name in upload folder
-        var path          = myFile.path;         // full path of uploaded file
-        var destination   = myFile.destination;  // folder where file is saved to
-        var size          = myFile.size;
-        var mimetype      = myFile.mimetype;
-
-        for (var i in widgets) {
-            if (widgets[i]._id === widgetId) {
-                widgets[i].width = width;
-                widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
-                pageId = widgets[i].pageId;
-            }
+        if(myFile == undefined){
+            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/"+widgetId);
         }
-        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
+        else{
+            var originalname  = myFile.originalname; // file name on user's computer
+            var filename      = myFile.filename;     // new file name in upload folder
+            var path          = myFile.path;         // full path of uploaded file
+            var destination   = myFile.destination;  // folder where file is saved to
+            var size          = myFile.size;
+            var mimetype      = myFile.mimetype;
+
+            for (var i in widgets) {
+                if (widgets[i]._id === widgetId) {
+                    widgets[i].width = width;
+                    widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+                }
+            }
+            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
+        }
     }
 
     function deleteWidget(req, res) {
@@ -69,11 +73,11 @@ module.exports = function (app) {
                 break;
             case "IMAGE":
                 widget.width = "100%";
-                widget.url = "http://lorempixel.com/";
+                widget.url = "http://lorempixel.com/400/200/sports/1/";
                 break;
             case "YOUTUBE":
                 widget.width = "100%";
-                widget.url = "http://lorempixel.com/";
+                widget.url = "https://youtu.be/AM2Ivdi9c4E";
                 break;
             case "HTML":
                 widget.text = "Default Text";

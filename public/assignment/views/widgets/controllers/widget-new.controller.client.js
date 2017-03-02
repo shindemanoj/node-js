@@ -34,10 +34,5 @@
                     vm.error = 'sorry could not create widget';
                 });
         }
-        function uploadImage(){
-            console.log("HAHAHA");
-            return $http.post("/api/upload");
-        }
-
     }
 })();
