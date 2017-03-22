@@ -23,12 +23,11 @@
 
         function createWidget(widgetType) {
             newWidget = {};
-            newWidget._id =  (new Date()).getTime().toString();
-            newWidget.widgetType = widgetType;
+            newWidget.type = widgetType;
             WidgetService
                 .createWidget(vm.pageId, newWidget)
                 .success(function(widget){
-                    $location.url("/user/" + vm.userId +"/website/" +vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                    $location.url("/user/" + vm.userId +"/website/" +vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget._id);
                 })
                 .error(function () {
                     vm.error = 'sorry could not create widget';

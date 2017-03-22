@@ -14,6 +14,8 @@
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
         vm.createWidget = createWidget;
+        vm.sendToFlickr = sendToFlickr;
+
         function init() {
             WidgetService
                 .findWidgetById(vm.widgetId)
@@ -23,15 +25,18 @@
         }
         init();
 
+        function sendToFlickr(){
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/"+ vm.widgetId +"/flickr" );
+        }
+
         function createWidget(widgetType) {
             newWidget = {};
-            newWidget._id =  (new Date()).getTime().toString();
-            newWidget.widgetType = widgetType;
+            newWidget.type = widgetType;
 
             WidgetService
                 .createWidget(vm.pageId, newWidget)
                 .success(function(widget){
-                    $location.url("/user/" + vm.userId +"/website/" +vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                    $location.url("/user/" + vm.userId +"/website/" +vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget._id);
                 })
                 .error(function () {
                     vm.error = 'sorry could not create widget';
