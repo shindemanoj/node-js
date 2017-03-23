@@ -70,11 +70,21 @@ module.exports = function (app, widgetModel) {
         }
     }
 
+    function deleteUploadedImage(imageUrl) {
+        if(imageUrl && imageUrl.search('http') == -1){
+            fs.unlink(publicDirectory+imageUrl, function (err) {
+                if(err){
+                    console.log(err);
+                    return;
+                }
+            });
+        }
+    }
+
     function updateWidgetOrder(req, res) {
         var pageId = req.params.pid;
         var startIndex = parseInt(req.query.initial);
         var endIndex = parseInt(req.query.final);
-
         widgetModel
             .reorderWidget(pageId, startIndex, endIndex)
             .then(function (response) {
@@ -84,14 +94,17 @@ module.exports = function (app, widgetModel) {
             });
     }
 
-    function deleteWidget(req, res) {
+    function deleteWidget(req, res){
         var widgetId = req.params.widgetId;
-        widgetModel.
-        deleteWidget(widgetId)
-            .then(function (status) {
-                res.send(status);
+        widgetModel
+            .deleteWidget(widgetId)
+            .then(function (response) {
+                if(response.result.n == 1 && response.result.ok == 1){
+                    res.sendStatus(200);
+                }
             }, function (err) {
-                res.sendStatus(500).send(err);
+                console.log(err);
+                res.sendStatus(404);
             });
     }
 
@@ -116,6 +129,7 @@ module.exports = function (app, widgetModel) {
                 break;
             case "TEXT":
                 widget.text = "Default Text";
+                widget.placeholder = "Enter Text";
                 break;
         }
         widgetModel

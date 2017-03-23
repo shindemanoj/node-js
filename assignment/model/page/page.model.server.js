@@ -8,8 +8,9 @@ module.exports = function () {
         findAllPagesForWebsite: findAllPagesForWebsite,
         updatePage: updatePage,
         deletePage: deletePage,
-        setModel: setModel
-    };
+        deletePageAndChildren: deletePageAndChildren,
+        setModel: setModel,
+     };
 
     var mongoose = require('mongoose');
 
@@ -80,32 +81,46 @@ module.exports = function () {
         return deffered.promise;
     }
 
-    function deletePage(pageId){
-        var deferred = q.defer();
-        findPageById(pageId)
-            .then(function(page) {
-                console.log(page);
-                model.websiteModel
-                    .findWebsiteById(page._website)
-                    .then(function(website) {
-                        var index = website.pages.indexOf(page._id);
-                        website.pages.splice(index, 1);
-                        website.save();
-                        PageModel
-                            .remove({_id: page._id}, function (err, status) {
-                                if(err) {
-                                    deferred.reject(err);
-                                } else {
-                                    deferred.resolve(status);
-                                }
-                            });
-                    }, function (error) {
-                        res.sendStatus(500).send(error);
-                    });
-            }, function (error) {
-                res.sendStatus(500).send(error);
+    function deletePage(pageId) {
+        return PageModel.findById(pageId).populate('_website').then(function (page) {
+            page._website.pages.splice(page._website.pages.indexOf(pageId),1);
+            page._website.save();
+            return deletePageAndChildren(pageId);
+        }, function (err) {
+            return err;
+        });
+    }
+
+    function recursiveDelete(widgetsOfPage, pageId) {
+        if(widgetsOfPage.length == 0){
+            return PageModel.remove({_id: pageId})
+                .then(function (response) {
+                    if(response.result.n == 1 && response.result.ok == 1){
+                        return response;
+                    }
+                }, function (err) {
+                    return err;
+                });
+        }
+
+        return model.widgetModel.deleteWidgetOfPage(widgetsOfPage.shift())
+            .then(function (response) {
+                if(response.result.n == 1 && response.result.ok == 1){
+                    return recursiveDelete(widgetsOfPage, pageId);
+                }
+            }, function (err) {
+                return err;
             });
-        return deferred.promise;
+    }
+
+    function deletePageAndChildren(pageId) {
+        return PageModel.findById({_id: pageId})
+            .then(function (page) {
+                var widgetsOfPage = page.widgets;
+                return recursiveDelete(widgetsOfPage, pageId);
+            }, function (err) {
+                return err;
+            });
     }
 
     function setModel(_model) {

@@ -85,16 +85,39 @@ module.exports = function () {
         return deffered.promise;
     }
 
-    function deleteUser(userId){
-        var deferred = q.defer();
-        UserModel.remove({_id: userId}, function (err, status) {
-            if(err) {
-                deferred.reject(err);
-            } else {
-                deferred.resolve(status);
-            }
-        });
-        return deferred.promise;
+    function recursiveDelete(websitesOfUser, userId) {
+        if(websitesOfUser.length == 0){
+            // All websites of user successfully deleted
+            // Delete the user
+            return UserModel.remove({_id: userId})
+                .then(function (response) {
+                    if(response.result.n == 1 && response.result.ok == 1){
+                        return response;
+                    }
+                }, function (err) {
+                    return err;
+                });
+        }
+
+        return model.websiteModel.deleteWebsiteAndChildren(websitesOfUser.shift())
+            .then(function (response) {
+                if(response.result.n == 1 && response.result.ok == 1){
+                    return recursiveDelete(websitesOfUser, userId);
+                }
+            }, function (err) {
+                return err;
+            });
+    }
+
+    function deleteUser(userId) {
+        return UserModel.findById({_id: userId})
+            .then(function (user) {
+                var websitesOfUser = user.websites;
+                return recursiveDelete(websitesOfUser, userId);
+            }, function (err) {
+                console.log(err);
+                return err;
+            });
     }
 
     function setModel(_model) {

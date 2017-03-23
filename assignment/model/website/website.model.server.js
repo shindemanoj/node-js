@@ -7,8 +7,8 @@ module.exports = function () {
         findAllWebsitesForUser: findAllWebsitesForUser,
         updateWebsite: updateWebsite,
         deleteWebsite: deleteWebsite,
+        deleteWebsiteAndChildren: deleteWebsiteAndChildren,
         setModel: setModel,
-        deleteAllPages: deleteAllPages
     };
 
     var mongoose = require('mongoose');
@@ -81,63 +81,48 @@ module.exports = function () {
     }
 
     function deleteWebsite(websiteId){
-        var deferred = q.defer();
-        findWebsiteById(websiteId)
-            .then(function(website) {
-                model.userModel
-                    .findUserById(website._user)
-                    .then(function(user) {
-                        var index = user.websites.indexOf(website._id);
-                        user.websites.splice(index, 1);
-                        user.save();
-                        WebsiteModel
-                            .remove({_id: website._id}, function (err, status) {
-                                if(err) {
-                                    deferred.reject(err);
-                                } else {
-                                    deferred.resolve(status);
-                                }
-                            });
-                    }, function (error) {
-                        res.sendStatus(500).send(error);
-                    });
-            }, function (error) {
-                res.sendStatus(500).send(error);
+        return WebsiteModel.findOne({_id:websiteId}).populate('_user').then(function (website) {
+            website._user.websites.splice(website._user.websites.indexOf(websiteId),1);
+            website._user.save();
+            return deleteWebsiteAndChildren(websiteId);
+        }, function (err) {
+            console.log(err);
+            return err;
+        });
+    }
+
+    function recursiveDelete(pagesOfWebsite, websiteId) {
+        if(pagesOfWebsite.length == 0){
+            return WebsiteModel.remove({_id: websiteId})
+                .then(function (response) {
+                    if(response.result.n == 1 && response.result.ok == 1){
+                        return response;
+                    }
+                }, function (err) {
+                    console.log(err);
+                    return err;
+                });
+        }
+
+        return model.pageModel.deletePageAndChildren(pagesOfWebsite.shift())
+            .then(function (response) {
+                if(response.result.n == 1 && response.result.ok == 1){
+                    return recursiveDelete(pagesOfWebsite, websiteId);
+                }
+            }, function (err) {
+                return err;
             });
-        return deferred.promise;
-     }
+    }
 
-     function deleteAllPages(pageId, pages, website){
-         if(pages.length > 0){
-             console.log(pageId);
-             model.pageModel.deletePage(pageId)
-                 .then(function (status) {
-                     deleteAllPages(pages[0], pages, website)
-                 }, function (err) {
-                     res.sendStatus(500).send(err);
-                 });
-         }
-         else{
-             model.userModel
-                 .findUserById(website._user)
-                 .then(function(user) {
-                     var index = user.websites.indexOf(website._id);
-                     user.websites.splice(index, 1);
-                     user.save();
-                     WebsiteModel
-                         .remove({_id: website._id}, function (err, status) {
-                             if(err) {
-                                 deferred.reject(err);
-                             } else {
-                                 deferred.resolve(status);
-                             }
-                         });
-                 }, function (error) {
-                     res.sendStatus(500).send(error);
-                 });
-         }
-     }
-
+    function deleteWebsiteAndChildren(websiteId){
+        return WebsiteModel.findById({_id: websiteId}).select({'pages':1})
+            .then(function (website) {
+                var pagesOfWebsite = website.pages;
+                return recursiveDelete(pagesOfWebsite, websiteId);
+            }, function (err) {
+                return err;
+            });
+    }
     function setModel(_model) {
         model = _model;
     }

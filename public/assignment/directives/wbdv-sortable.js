@@ -1,9 +1,10 @@
-(function () {
+(function() {
     angular
         .module('WebAppMaker')
-        .directive('wbdvDirectives', wbdvDirectives);
+        .directive('wbdvSortable', wbdvSortable);
 
-    function wbdvDirectives() {
+//Create a directive called jga-sortable that uses jQuery and jQueryUI to implement the reordering behavior.
+    function wbdvSortable() {
         function linkfunc(scope, element, attributes, sortingController) {
             element.sortable({
                 start: function(event, ui){

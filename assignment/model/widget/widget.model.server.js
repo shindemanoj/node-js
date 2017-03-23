@@ -6,14 +6,14 @@ module.exports = function() {
     var publicDirectory =__dirname+"/../../../public";
 
     var api = {
-        "createWidget":createWidget,
-        "findAllWidgetsForPage":findAllWidgetsForPage,
-        "findWidgetById":findWidgetById,
-        "updateWidget":updateWidget,
-        "deleteWidget":deleteWidget,
-        //"deleteWidgetOfPage":deleteWidgetOfPage,
-        "reorderWidget":reorderWidget,
-        "setModel":setModel
+        createWidget:createWidget,
+        findAllWidgetsForPage:findAllWidgetsForPage,
+        findWidgetById:findWidgetById,
+        updateWidget:updateWidget,
+        deleteWidget:deleteWidget,
+        deleteWidgetOfPage: deleteWidgetOfPage,
+        reorderWidget:reorderWidget,
+        setModel:setModel
     };
 
     var mongoose = require("mongoose");
@@ -57,17 +57,32 @@ module.exports = function() {
         return deffered.promise;
     }
 
-    function findAllWidgetsForPage(pageId){
-        var deffered = q.defer();
-        WidgetModel
-            .find({_page:pageId}, function (err, widgets) {
-                if(err) {
-                    deffered.reject(err);
-                } else {
-                    deffered.resolve(widgets);
-                }
+    function getWidgetsRecursively(count, widgetsOfPage, widgetCollectionForPage) {
+        if(count == 0){
+            return widgetCollectionForPage;
+        }
+
+        return WidgetModel.findById(widgetsOfPage.shift()).select('-__v')
+            .then(function (widget) {
+                widgetCollectionForPage.push(widget);
+                return getWidgetsRecursively(--count, widgetsOfPage, widgetCollectionForPage);
+            }, function (err) {
+                return err;
             });
-        return deffered.promise;
+    }
+
+    function findAllWidgetsForPage(pageId){
+       return model.pageModel
+            .findPageById(pageId)
+            .then(function (page) {
+                var widgetsOfPage = page.widgets;
+                var numberOfWidgets = widgetsOfPage.length;
+                var widgetCollectionForPage = [];
+
+                return getWidgetsRecursively(numberOfWidgets, widgetsOfPage, widgetCollectionForPage);
+            }, function (err) {
+                return err;
+            });
     }
 
     function updateWidget(widgetId, widget){
@@ -85,73 +100,54 @@ module.exports = function() {
     }
 
     function deleteWidget(widgetId){
-        var deferred = q.defer();
-        findWidgetById(widgetId)
-            .then(function(widget) {
-                model.pageModel
-                    .findPageById(widget._page)
-                    .then(function(page) {
-                        var index = page.widgets.indexOf(widget._id);
-                        page.widgets.splice(index, 1);
-                        page.save();
-                        WidgetModel
-                            .remove({_id: widget._id}, function (err, status) {
-                                if(err) {
-                                    deferred.reject(err);
-                                } else {
-                                    deferred.resolve(status);
-                                }
-                            });
-                    }, function (error) {
-                        res.sendStatus(500).send(error);
-                    });
-            }, function (error) {
-                res.sendStatus(500).send(error);
-            });
-        return deferred.promise;
+        return WidgetModel.findById(widgetId).populate('_page').then(function (widget) {
+            widget._page.widgets.splice(widget._page.widgets.indexOf(widgetId),1);
+            widget._page.save();
+            if(widget.type == "IMAGE"){
+                deleteUploadedImage(widget.url);
+            }
+            return WidgetModel.remove({_id:widgetId});
+        }, function (err) {
+            return err;
+        });
     }
 
-    function deleteAllPages(pageId, pages, website){
-        if(pages.length > 0){
-            console.log(pageId);
-            model.pageModel.deletePage(pageId)
-                .then(function (status) {
-                    deleteAllPages(pages[0], pages, website)
-                }, function (err) {
-                    res.sendStatus(500).send(err);
-                });
-        }
-        else{
-            model.userModel
-                .findUserById(website._user)
-                .then(function(user) {
-                    var index = user.websites.indexOf(website._id);
-                    user.websites.splice(index, 1);
-                    user.save();
-                    WebsiteModel
-                        .remove({_id: website._id}, function (err, status) {
-                            if(err) {
-                                deferred.reject(err);
-                            } else {
-                                deferred.resolve(status);
-                            }
-                        });
-                }, function (error) {
-                    res.sendStatus(500).send(error);
-                });
+    function deleteWidgetOfPage(widgetId) {
+        return WidgetModel.findById(widgetId)
+            .then(function (widget) {
+                if(widget.type == "IMAGE"){
+                    deleteUploadedImage(widget.url);
+                }
+                return WidgetModel.remove({_id: widgetId});
+            }, function (err) {
+                return err;
+            });
+    }
+
+    function deleteUploadedImage(imageUrl) {
+        // Local helper function
+        if(imageUrl && imageUrl.search('http') == -1){
+            // Locally uploaded image
+            // Delete it
+            fs.unlink(publicDirectory+imageUrl, function (err) {
+                if(err){
+                    console.log(err);
+                    return;
+                }
+                console.log('successfully deleted '+publicDirectory+imageUrl);
+            });
         }
     }
 
     function reorderWidget(pageId, start, end) {
-        var deferred = q.defer();
         return model.pageModel
             .findPageById(pageId)
             .then(function (page) {
                 page.widgets.splice(end, 0, page.widgets.splice(start, 1)[0]);
                 page.save();
-                deffered.resolve(page);
+                return 200;
             }, function (err) {
-                deffered.reject(err);
+                return err;
             });
     }
 
