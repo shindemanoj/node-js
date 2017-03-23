@@ -87,8 +87,6 @@ module.exports = function () {
 
     function recursiveDelete(websitesOfUser, userId) {
         if(websitesOfUser.length == 0){
-            // All websites of user successfully deleted
-            // Delete the user
             return UserModel.remove({_id: userId})
                 .then(function (response) {
                     if(response.result.n == 1 && response.result.ok == 1){

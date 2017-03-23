@@ -36,6 +36,7 @@ module.exports = function() {
                             page.widgets.push(widget._id);
                             page.save();
                         }, function (error) {
+                            console.log(error);
                             res.sendStatus(500).send(error);
                         });
                     deffered.resolve(widget);
@@ -125,16 +126,11 @@ module.exports = function() {
     }
 
     function deleteUploadedImage(imageUrl) {
-        // Local helper function
         if(imageUrl && imageUrl.search('http') == -1){
-            // Locally uploaded image
-            // Delete it
             fs.unlink(publicDirectory+imageUrl, function (err) {
                 if(err){
-                    console.log(err);
                     return;
                 }
-                console.log('successfully deleted '+publicDirectory+imageUrl);
             });
         }
     }
