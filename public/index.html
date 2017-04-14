@@ -1,38 +1,1326 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Web Dev Course Home Page</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-        $(function(){
-            $("#footer").load("footer.html");
-        });
-    </script>
-</head>
-<body>
-        <h1>Web Dev Course Home Page</h1>
-        <h2> Welcome</h2>
-        <div class="container-fluid">
-            <p class="link"> Required links: </p>
-            <ul>
-                <li>
-                    <a href="project/index.html">Project</a>
-                </li>
-                <li>
-                    <a href="assignment/#">Assignment</a>
-                </li>
-                <li>
-                    <a href="test/index.html">Test MongoDB</a>
-                </li>
-                <li>
-                    <a href="https://github.com/shindemanoj/shinde-manoj-webdev">Public repository at GitHub.com</a>
-                </li>
-            </ul>
+	<head>
+		
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="content-script-type" content="text/javascript" />
+		<meta http-equiv="content-style-type" content="text/css" />
+		<meta http-equiv="content-language" content="nl" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="author" content="Manoj Shinde" />
+		<meta name="description" content="I am Manoj Shinde. I love developing web applications using different technologies." />
+		<meta name="keywords" content="Manoj Shinde, Software Developer, Interactive Resume, Java programmer, Web developer, Algorithms, MongoDB, MySQL, OOP" />
+		<meta name="robots" content="index, follow" />
+		<meta name="revisit-after" content="14 days" />
+			
+		<title>Manoj Shinde - Software Developer - Interactive Resume</title>
+		
+		<!-- Bootstrap core CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css" />
+		<link href="./view/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="view/css/style.css" rel="stylesheet" />
+		
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+	</head>
+	<body data-spy="scroll" data-target="#navbar-example">
+		<div id="top" class="jumbotron" data-src="./view/images/tower_scope_animation.gif" data-position="center right">
+			<div class="container">
+				<h1>Manoj Shinde</h1>
+				<p class="lead">Software Developer</p>
+			</div>
+			
+			<div class="overlay"></div>
+			
+			<a href="#profile" class="scroll-down">	
+				<span class="glyphicon glyphicon-chevron-down"></span>
+			</a>
+		</div>
+		
+		<nav class="navbar navbar-default" id="navbar-example" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+                    <li class="active"><a href="#profile">Profile</a></li>
+					<li><a href="#experiences">Experiences</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#abilities">Abilities</a></li>
+					<li><a href="#contact">Contact</a></li>
+                    <!--<li><a href="https://webdev-shinde-manoj.herokuapp.com/assignment" target="_blank">Assignment</a></li>-->
+                    <!--<li><a href="https://get-me-social.herokuapp.com/" target="_blank">Web Dev Project</a></li>-->
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</nav>
+		
+		<div class="background-white">
+			<div id="profile" class="container">
+				<h2>Profile</h2>
+<p class="lead">I&#039;m a creative webdeveloper</p>
+
+<hr />
+
+<div class="row">
+	<div class="col-md-4">
+		<h3>About me</h3>
+		<p>
+            I am currently a Graduate student at Northeastern University, pursuing my Masters degree in Computer Science.
+            <br>Key Areas of Expertise: Full Stack Web Development (MEAN)
+            and Software Engineering (Java, Python).</p>
+	</div>
+	<div class="col-md-4 text-center">
+		<img src="./view/images/Manoj.jpg" class="myimage" alt="Manoj Shinde" width="246" height="246" />
+	</div>
+	<div class="col-md-4">
+		<h3>Details</h3>
+		<p>
+			<strong>Name:</strong><br />
+			Manoj Suresh Shinde<br />
+			<strong>Phone:</strong><br />
+			+18579280637<br />
+            <strong>Email:</strong><br />
+            shinde.m@husky.neu.edu<br />
+			<strong>Location:</strong><br />
+			226 Parker Hill Avenue, Boston, MA-02120		</p>
+	</div>
+</div>			</div>	
+		</div>	
+		
+		<div id="experiences" class="container">
+			<h2>Experiences</h2>
+<p class="lead">
+	&ldquo;Protons give an atom its identity, electrons its personality.&rdquo;<br />- Bill Bryson, A short history of nearly everything
+</p>
+
+<hr />
+
+<!--<div class="alert alert-danger">
+	<strong>Looking for an awesome new challenge somewhere in the neighborhood of Den Bosch or Amsterdam as a Creative PHP Web Developer. </strong>
+</div>-->
+
+<h3>Educations</h3>
+
+
+<div class="experiences">
+
+					
+	<div class="experience row">
+		<div class="col-md-4">
+			<h4>Northeastern University</h4>
+			<p class="experience-period">
+				September 2016				-
+				Present			</p>
+		</div>
+		<div class="col-md-8">
+			<p>
+				<strong>Candidate for Master of Science in Computer Science</strong>
+				<span class="hidden-phone">
+					<strong>Courses</strong>
+					<ul>
+						<li>Algorithms</li>
+						<li>Web Development</li>
+						<li>Programming Design Paradigms</li>
+						<li>Information Retrieval</li>
+					</ul>
+				</span>
+				<span class="experience-details">
+					<span class="location">
+						<span class="glyphicon glyphicon-map-marker"></span>
+						College of Computer and Information Science, Boston, MA</span>
+				</span>
+			</p>
+		</div>
+	</div>
+	
+					
+	<div class="experience row">
+		<div class="col-md-4">
+			<h4>Pune Institute of Computer Technology</h4>
+			<p class="experience-period">
+				August 2009				-
+				June 2013			</p>
+		</div>
+		<div class="col-md-8">
+			<p>
+				<strong>Bachelor of Engineering in Electronics and Telecommunication</strong>
+				<span class="hidden-phone">
+				<strong>Courses</strong>
+					<ul>
+						<li>Data Structures</li>
+						<li>Networking</li>
+						<li>Computer Systems</li>
+					</ul>
+				</span>
+				<span class="experience-details">
+					<span class="location">
+						<span class="glyphicon glyphicon-map-marker"></span>
+						Pune, India</span>
+				</span>
+			</p>
+		</div>
+	</div>
+</div>
+	
+	
+
+<hr />
+
+<h3>Careers</h3>
+
+
+<div class="experiences">
+
+					
+	<div class="experience row">
+		<div class="col-md-4">
+			<h4>Cybage Software Private Limited</h4>
+			<p class="experience-period">
+				July 2013				-
+				July 2016</p>
+		</div>
+		<div class="col-md-8">
+			<p>
+				<strong>Software Engineer</strong>
+				<span>
+					<ul>
+						<li>As a full stack developer, I developed IHMobile hotel booking website from requirements to production deployment that utilized Java, Spring, JSPs, Jquery, HTML5, and CSS3.</li>
+						<li>Developed code for other departmental applications.</li>
+						<li>Designed and delivered training to three software developers for maintenance of applications.</li>
+						<li>Actively worked in an agile software development environment which utilized the Scrum process.</li>
+						<li>Participated in Sprint Planning, Daily Scrum Stand Up, and Sprint Retrospective meetings.</li>
+						<li>Provided L3 support for all departmental applications.</li>
+					</ul>
+				</span>
+				<span class="experience-details">
+					<span class="location">
+						<span class="glyphicon glyphicon-map-marker"></span>
+						Pune, India</span>
+					
+										
+					<span class="seperator">|</span>
+					<span class="link">
+						<span class="glyphicon glyphicon-link"></span>
+						<a href="http://www.cybage.com" target="_blank">http://www.cybage.com</a>
+					</span>
+					
+										
+				</span>
+			</p>
+		</div>
+	</div>
+	
+					
+	<div class="experience row">
+		<div class="col-md-4">
+			<h4>Myoncampuschef (Oncampus Job)</h4>
+			<p class="experience-period">
+				January 2017				-
+				Present			</p>
+		</div>
+		<div class="col-md-8">
+			<p>
+				<strong>Software Engineer Intern</strong>
+				<span>
+					<ul>
+						<li>My On campus Chef is a peer to peer marketplace that connects students living on campus without a kitchen to students living on/off campus willing to host and cook traditional homemade food for them for a reasonable amount of money based on their costs.</li>
+						<li>As a developer, I am working with Python, HTML5, CSS, JavaScript and a Bootstrap framework to improve user experience, while using a Django stack to design model forms and store user information.</li>
+					</ul>
+				</span>
+				<span class="experience-details">
+					<span class="location">
+						<span class="glyphicon glyphicon-map-marker"></span>
+						Boston, MA</span>
+					
+										
+					<span class="seperator">|</span>
+					<span class="link">
+						<span class="glyphicon glyphicon-link"></span>
+						<a href="http://www.myoncampuschef.com/" target="_blank">http://www.myoncampuschef.com</a>
+					</span>
+					
+										
+				</span>
+			</p>
+		</div>
+	</div>
+	
+</div>
+		</div>
+		
+		<div id="projects" class="container">
+			<h2>Projects</h2>
+<p class="lead">
+	&ldquo;You can do anything you set your mind to.&rdquo;<br />- Benjamin Franklin
+</p>
+
+<hr />
+
+    <div class="experience">
+
+		<div class="experience row">
+			<div class="col-md-4">
+				<h4>Get Me Social</h4>
+				<p class="experience-period">
+					January 2017				-
+					April 2017</p>
+			</div>
+			<div class="col-md-8">
+				<p>
+					<strong>MEAN stack website</strong>
+					<span>
+                <ul>
+                    <li>Developed a responsive website using Angular JS, Node JS, MongoDB, Express, and Bootstrap.</li>
+                    <li>In this project, the user can create custom events based on his interests.</li>
+                    <li>Each user can participate, like, comments on existing events.</li>
+                    <li>User can see only his nearby and interested sport events, Restaurant Reviews and Movie Reviews</li>
+                </ul>
+            </span>
+					<span class="experience-details">
+                <span class="location">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    Boston, MA</span>
+
+
+                <span class="seperator">|</span>
+                <span class="link">
+                    <span class="glyphicon glyphicon-link"></span>
+                    <a href="https://get-me-social.herokuapp.com/" target="_blank">https://get-me-social.herokuapp.com</a>
+                </span>
+			</span>
+					<span class="experience-details">
+						<span class="link">
+						<span class="glyphicon glyphicon-link"></span>
+						<a href="https://github.com/shindemanoj/MEAN-stack-project" target="_blank">https://github.com/shindemanoj/MEAN-stack-project</a>
+						</span>
+					</span>
+				</p>
+			</div>
+		</div>
+
+        <div class="experience row">
+            <div class="col-md-4">
+                <h4>Create your own website</h4>
+                <p class="experience-period">
+                    January 2017				-
+                    April 2017</p>
+            </div>
+            <div class="col-md-8">
+                <p>
+                    <strong>MEAN stack website</strong>
+                    <span>
+                <ul>
+                    <li>Developed a responsive website using Angular JS, Node JS, Jquery, MongoDB, Express, HTML5, and Bootstrap.</li>
+                    <li>In this project, the user can customize pages for his website like adding widgets.</li>
+                    <li>Each user can have many websites. Each Website can have many pages. Each page can have many widgets.</li>
+                    <li>Users can add widgets like YouTube, Image, HTML text and Headers.</li>
+                </ul>
+            </span>
+                    <span class="experience-details">
+                <span class="location">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    Boston, MA</span>
+
+
+                <span class="seperator">|</span>
+                <span class="link">
+                    <span class="glyphicon glyphicon-link"></span>
+                    <a href="https://webdev-shinde-manoj.herokuapp.com/assignment/" target="_blank">https://webdev-shinde-manoj.herokuapp.com/assignment/</a>
+                </span>
+
+
+            </span>
+					<span class="experience-details">
+						<span class="link">
+						<span class="glyphicon glyphicon-link"></span>
+						<a href="https://github.com/shindemanoj/shinde-manoj-webdev" target="_blank">https://github.com/shindemanoj/shinde-manoj-webdev</a>
+						</span>
+					</span>
+                </p>
+            </div>
+        </div>
+            <div class="experience row">
+                <div class="col-md-4">
+                    <h4>Information Retrieval</h4>
+                    <p class="experience-period">
+                        September 2016				-
+                        October	2016	</p>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        <strong>Crawling, cleaning and indexing of data from Wikipedia Pages</strong>
+                        <span>
+                <ul>
+                    <li>Implemented Crawler for 1000 Wikipedia pages with support to focused and unfocused crawling using Beautiful Soup library in python.</li>
+                    <li>Performed stopping and stemming to improve the search engine efficiency.</li>
+                    <li>Implemented Indexer to create the inverted index from crawled documents.</li>
+                </ul>
+            </span>
+                        <span class="experience-details">
+                <span class="location">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    Boston, MA</span>
+
+            </span>
+                    </p>
+                </div>
+            </div>
+                <div class="experience row">
+                    <div class="col-md-4">
+                        <h4>Information Retrieval</h4>
+                        <p class="experience-period">
+                            October 2016				-
+                            December 2016</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p>
+                            <strong>Search Engine implementation and performance evaluation</strong>
+                            <span>
+                <ul>
+                    <li>Implemented BM25 and TF-IDF document retrieval models.</li>
+                    <li>Performed query expansion using Pseudo Relevance Feedback Techniques.</li>
+                    <li>Compared the performance of BM25 and TF-IDF implementation with Lucene's search engine implementation using precision, recall, mean reciprocal rank and mean average precision.</li>
+                </ul>
+            </span>
+                            <span class="experience-details">
+                <span class="location">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    Boston, MA</span>
+            </span>
+                        </p>
+                    </div>
+        </div>
     </div>
-    <div id="footer"></div>
-</body>
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-12">
+		<figure class="effect">
+			<img src="./view/images/project_getmesocial.jpg" alt="Get ME Social" />
+
+			<figcaption>
+				<h3>Get Me Social</h3>
+				<p>Use Get Me Social so you can do more of what matters to you.
+					Or meet people near you who share your interests.</p>
+				<p><strong>Tags:</strong> <br />Angular JS, Node JS, Mongo DB, Express Framework, BootStrap</p>
+				<a href="https://get-me-social.herokuapp.com" target="_blank">View more</a>
+				<span class="icon">
+					<span class="glyphicon glyphicon-new-window"></span>
+				</span>
+			</figcaption>
+		</figure>
+	</div>
+
+
+	<div class="col-md-6 col-sm-12 col-xs-12">
+		<figure class="effect">
+			<img src="./view/images/website.JPG" alt="Create Your own Websites" />
+
+			<figcaption>
+				<h3>Create your own website</h3>
+				<p>An individual project where user can create his own website and can add Pages, Widgets to it.</p>
+				<p><strong>Tags:</strong> <br />Angular JS, Node JS, Mongo DB, Express Framework, BootStrap</p>
+				<a href="https://webdev-shinde-manoj.herokuapp.com/assignment" target="_blank">View more</a>
+				<span class="icon">
+					<span class="glyphicon glyphicon-new-window"></span>
+				</span>
+			</figcaption>
+		</figure>
+	</div>
+
+
+	<!--<div class="col-md-6 col-sm-12 col-xs-12">-->
+		<!--<figure class="effect">-->
+			<!--<img src="./view/images/project_soap.jpg" alt="SOAP - Den Bosch" />-->
+
+			<!--<figcaption>-->
+				<!--<h3>SOAP - Den Bosch</h3>-->
+				<!--<p>Build the website of the local barbershop.</p>-->
+				<!--<p><strong>Tags:</strong> <br />Design, Development, Bootstrap, Wordpress</p>-->
+				<!--<a href="http://soaphair.nl" target="_blank">View more</a>-->
+				<!--<span class="icon">-->
+					<!--<span class="glyphicon glyphicon-new-window"></span>-->
+				<!--</span>-->
+			<!--</figcaption>-->
+		<!--</figure>-->
+	<!--</div>-->
+
+
+	<!--<div class="col-md-6 col-sm-12 col-xs-12">-->
+		<!--<figure class="effect">-->
+			<!--<img src="./view/images/project_oranjebitter.jpg" alt="Oranjebitter Rotterdam" />-->
+
+			<!--<figcaption>-->
+				<!--<h3>Oranjebitter Rotterdam</h3>-->
+				<!--<p>Build a website for the Oranjebitter Festival in Rotterdam</p>-->
+				<!--<p><strong>Tags:</strong> <br />Development, Bootstrap, Wordpress</p>-->
+				<!--<a href="http://oranjebitter-rotterdam.nl" target="_blank">View more</a>-->
+				<!--<span class="icon">-->
+					<!--<span class="glyphicon glyphicon-new-window"></span>-->
+				<!--</span>-->
+			<!--</figcaption>-->
+		<!--</figure>-->
+	<!--</div>-->
+
+
+	<!--<div class="col-md-6 col-sm-12 col-xs-12">-->
+		<!--<figure class="effect">-->
+			<!--<img src="./view/images/project_veramulder.jpg" alt="Vera Mulder" />-->
+
+			<!--<figcaption>-->
+				<!--<h3>Vera Mulder</h3>-->
+				<!--<p>Created a personal website for the Journalist Vera Mulder.</p>-->
+				<!--<p><strong>Tags:</strong> <br />Development, Design, Wordpress, Bootstrap</p>-->
+				<!--<a href="http://veramulder.com" target="_blank">View more</a>-->
+				<!--<span class="icon">-->
+					<!--<span class="glyphicon glyphicon-new-window"></span>-->
+				<!--</span>-->
+			<!--</figcaption>-->
+		<!--</figure>-->
+	<!--</div>-->
+
+
+	<!--<div class="col-md-6 col-sm-12 col-xs-12">-->
+		<!--<figure class="effect">-->
+			<!--<img src="./view/images/project_oetelspel.jpg" alt="Oetelspel" />-->
+
+			<!--<figcaption>-->
+				<!--<h3>Oetelspel</h3>-->
+				<!--<p>An online game specially for Carneval at 's-Hertogenbosch.</p>-->
+				<!--<p><strong>Tags:</strong> <br />Development, Concept, Founder</p>-->
+				<!--<a href="http://oetelspel.nl" target="_blank">View more</a>-->
+				<!--<span class="icon">-->
+					<!--<span class="glyphicon glyphicon-new-window"></span>-->
+				<!--</span>-->
+			<!--</figcaption>-->
+		<!--</figure>-->
+	<!--</div>-->
+
+
+</div>
+        </div>
+		<div class="background-white">
+			<div id="abilities" class="container">
+				<h2>Abilities</h2>
+				<p class="lead">
+					&ldquo;Life without knowledge is death in disguise.&rdquo;<br />- Talib Kweli
+				</p>
+
+				<hr />
+
+				<h3>Programming Languages</h3>
+
+				<div class="row">
+
+
+					<div class="col-md-6">
+						<ul class="no-bullets">
+
+
+							<li>
+								<span class="ability-title">Java</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">C++</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star "></span>
+
+
+				</span>
+							</li>
+
+
+
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="no-bullets">
+
+
+
+							<li>
+								<span class="ability-title">Python</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star"></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">Racket</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+					</ul>
+					</div>
+
+
+				</div>
+
+				<hr />
+
+				<h3>Frameworks</h3>
+
+				<div class="row">
+
+
+					<div class="col-md-6">
+						<ul class="no-bullets">
+
+
+							<li>
+								<span class="ability-title">Spring MVC</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">Hibernate</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star"></span>
+
+
+					<span class="glyphicon glyphicon-star"></span>
+
+
+				</span>
+							</li>
+
+
+                            <li>
+                                <span class="ability-title">REST</span>
+                                <span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star"></span>
+
+
+				</span>
+                            </li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="no-bullets">
+
+
+
+							<li>
+								<span class="ability-title">Express</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">Django</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star "></span>
+
+
+					<span class="glyphicon glyphicon-star "></span>
+
+
+				</span>
+							</li>
+
+
+
+						</ul>
+					</div>
+
+
+				</div>
+
+				<hr />
+
+				<h3>Web Technologies</h3>
+
+				<div class="row">
+
+					<div class="col-md-6">
+						<ul class="no-bullets">
+
+                            <li>
+                                <span class="ability-title">Heroku Server</span>
+                                <span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+                            </li>
+							<li>
+								<span class="ability-title">Angular JS</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">Node JS</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">AJAX</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">Bootstrap Framework</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star"></span>
+
+
+				</span>
+							</li>
+					<li>
+						<span class="ability-title">XML</span>
+						<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+					</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="no-bullets">
+                    <li>
+                        <span class="ability-title">AWS Server</span>
+                        <span class="ability-score">
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+        </span>
+                    </li>
+					<li>
+						<span class="ability-title">JQuery</span>
+						<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+							<li>
+								<span class="ability-title">HTML (5)</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star "></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">CSS (3)</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star "></span>
+
+
+				</span>
+							</li>
+
+							<li>
+								<span class="ability-title">MVC Pattern</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+
+
+
+							<li>
+								<span class="ability-title">JSON</span>
+								<span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+							</li>
+
+						</ul>
+					</div>
+                </div>
+
+                <hr />
+
+                <h3>Databases</h3>
+
+                <div class="row">
+
+
+                    <div class="col-md-6">
+                        <ul class="no-bullets">
+
+
+                            <li>
+                                <span class="ability-title">Mongo DB</span>
+                                <span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="no-bullets">
+
+
+
+                            <li>
+                                <span class="ability-title">MySQL</span>
+                                <span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star"></span>
+
+
+				</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <hr />
+
+                    <h3>Development Tools</h3>
+
+                    <div class="row">
+
+
+                        <div class="col-md-6">
+                            <ul class="no-bullets">
+
+
+                                <li>
+                                    <span class="ability-title">Eclipse</span>
+                                    <span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+                                </li>
+                        <li>
+                            <span class="ability-title">WebStorm</span>
+                            <span class="ability-score">
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+            <span class="glyphicon glyphicon-star filled"></span>
+
+
+        </span>
+                        </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="no-bullets">
+
+
+
+                                <li>
+                                    <span class="ability-title">PyCharm</span>
+                                    <span class="ability-score">
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+					<span class="glyphicon glyphicon-star filled"></span>
+
+
+				</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                </div>
+
+                <div class="text-center project-referal">
+                    <a href="https://github.com/shindemanoj/" class="btn btn-primary" target="_blank">See projects on Github</a>
+                </div>
+
+            </div>
+		</div>
+
+		<div class="background-gray">
+			<div id="contact" class="container">
+				<h2>Contact</h2>
+<p class="lead">
+	&ldquo;If I had asked people what they wanted, they would have said faster horses. &rdquo;<br />- Henry Ford
+</p>
+
+<hr />
+
+<div class="row">
+	<div class="col-md-6">
+		<ul class="no-bullets">
+			<li>
+                <a href="https://github.com/shindemanoj" target="_blank" class="btn btn-social-icon btn-github">
+                    <span class="fa fa-github fa-3x" aria-hidden="true"></span>
+                    &nbsp; https://github.com/shindemanoj</a>
+			</li>
+            <li>
+                <a href="#" class="btn btn-social-icon btn-github">
+                    <span class="fa fa-paper-plane fa-3x" aria-hidden="true"></span>
+                    &nbsp; shinde.m@husky.neu.edu</a>
+            </li>
+
+		</ul>
+	</div>
+	<div class="col-md-6">
+		<ul class="no-bullets">
+            <li>
+                <a href="https://www.linkedin.com/in/manoj-shinde" target="_blank" class="btn btn-social-icon btn-linke">
+                    <span class="fa fa-linkedin-square fa-3x" aria-hidden="true"></span>
+                    &nbsp; www.linkedin.com/in/manoj-shinde</a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/manoj.shinde.391420" target="_blank" class="btn btn-social-icon btn-facebook">
+                    <span class="fa fa-facebook-square fa-3x" aria-hidden="true"></span>
+                    &nbsp; www.facebook.com/manoj.shinde.391420</a>
+            </li>
+		</ul>
+	</div>
+</div>
+
+<hr />
+
+<div class="row text-center">
+        <a href="https://www.dropbox.com/s/g88zu773qilsf7k/Resume-Manoj%20Shinde.pdf?dl=0" target="_blank">
+                <span class="fa fa-cloud-download fa-2x">&nbsp;Resume</span>
+        </a>
+	</div>			</div>
+		</div>
+		
+		<!--<div class="modal fade" id="upgrade-dialog" tabindex="-1" role="dialog" aria-hidden="true">-->
+	<!--<div class="modal-dialog">-->
+		<!--<div class="modal-content">-->
+			<!--<div class="modal-header">-->
+				<!--<h4 class="modal-title">Your browser is out of date</h4>-->
+			<!--</div>-->
+			<!--<div class="modal-body">-->
+				<!--<p>To get the best possible experience using our site we recommend that you upgrade to a modern web browser. To download a newer web browser click on the Upgrade button.</p>-->
+			<!--</div>-->
+			<!--<div class="modal-footer">-->
+				<!--<a href="http://browsehappy.com/" target="_blank" class="btn btn-primary">Upgrade</a>-->
+			<!--</div>-->
+		<!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+	<!--</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+<!--</div>&lt;!&ndash; /.modal &ndash;&gt;		-->
+		<!-- Bootstrap core JavaScript -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="./view/js/script.js"></script>
+		<script type="text/javascript" src="./view/js/bootstrap.min.js"></script>
+		
+		<!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-96563736-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+	</body>
 </html>
